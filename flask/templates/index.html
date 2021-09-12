@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form action="{{  url_for('index') }}" method="POST">
+    <div class="text-center">
+        <H1 style="color:white">
+                    WORLD
+            B⊶L⊶O⊶c⊶K⊶c⊶H⊶A⊶I⊶N</H1>
+    </div>
+        <style>
+            .primer{
+                padding: 5px;
+                opacity: 0.5;
+            }
+        </style>
+
+
+  <div class="primer">
+    <label class="badge bg-info text-dark" for="disabledTextInput">Отправитель</label>
+    <input style="color: black" type="text" class="form-control"  id="exampleInputLender"placeholder="ФИО"
+           name = "lender" value="{{ request.form.get('lender','') }}">
+  </div>
+
+  <div class="primer">
+    <label class="badge bg-info text-dark" for="exampleInputAmount">ИИН</label>
+    <input type="text" class="form-control" id="exampleInputAmount"placeholder="ИИН"
+           name="amount" value="{{ request.form.get('amount','') }}" >
+  </div>
+
+  <div class="primer">
+    <label class="badge bg-info text-dark" for="exampleInputBorrower">КАНДИДАТ</label>
+    <input type="text" class="form-control" id="exampleInputBorrower"placeholder="КАНДИДАТ"
+           name="borrower" value="{{ request.form.get('borrower','') }}">
+  </div>
+
+        <button type="submit" class="btn btn-primary">Нажать</button>
+</form>
+
+
+{% endblock %}
+
+{% block checking %}
+
+    {% for res in results %}
+    <div class="alert alert-primary">
+<button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+
+        Блок под номером{{  res[' block '] }} : {{  res['result'] }}
+
+
+
+
+
+    </div>
+
+    {% endfor %}
+
+
+
+{%  endblock %}
